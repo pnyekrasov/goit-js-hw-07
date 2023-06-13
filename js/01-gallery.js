@@ -11,11 +11,20 @@ boxPicturesEl.addEventListener('click', handlerOpenOriginal);
 
 function handlerOpenOriginal(e) {e.preventDefault();
     const instance = basicLightbox.create(`<img class="gallery__image" src="${e.target.dataset.source}" alt="${e.target.description}"/>`);
-instance.show();
+    instance.show();
+     document.addEventListener('keydown', handlerCloseOriginal);
 }
+     
+function handlerCloseOriginal(e) {
+_close()
 
-boxPicturesEl.removeEventListener('click', handlerCloseOriginal);
-function handlerCloseOriginal() { };
+    console.log(e);
+};
+
+// boxPicturesEl.removeEventListener('keydown', handlerCloseOriginal);
+// function handlerCloseOriginal() {
+//     if(instance.visible() && )
+// };
 // const visible = basicLightbox.visible()
 // instance.close(() => console.log('lightbox not visible anymore'))
 // instance.close()
