@@ -9,22 +9,19 @@ boxPicturesEl.insertAdjacentHTML('beforeend', galleryPicturesEls.join(''));
 
 boxPicturesEl.addEventListener('click', handlerOpenOriginal);
 
-function handlerOpenOriginal(e) {e.preventDefault();
-    const instance = basicLightbox.create(`<img class="gallery__image" src="${e.target.dataset.source}" alt="${e.target.description}"/>`);
-    instance.show();
-     document.addEventListener('keydown', handlerCloseOriginal);
-}
-     
-function handlerCloseOriginal(e) {
-_close()
-
-    console.log(e);
+function handlerOpenOriginal(e) {
+    e.preventDefault();
+    const originalEl = basicLightbox.create(`<img src="${e.target.dataset.source}" alt="${e.target.description}"/>`);
+    originalEl.show();
+    
+    boxPicturesEl.addEventListener('keydown', handlerCloseOriginal);
+    function handlerCloseOriginal(e) {
+    if (e.code === 'Escape') {
+        originalEl.close();
+                boxPicturesEl.removeEventListener('keydown', handlerCloseOriginal);
+   
+    };
+    };
 };
 
-// boxPicturesEl.removeEventListener('keydown', handlerCloseOriginal);
-// function handlerCloseOriginal() {
-//     if(instance.visible() && )
-// };
-// const visible = basicLightbox.visible()
-// instance.close(() => console.log('lightbox not visible anymore'))
-// instance.close()
+
