@@ -7,18 +7,18 @@ const galleryPicturesEls = galleryItems.map(({ preview, original, description })
 
 boxPicturesEl.insertAdjacentHTML('beforeend', galleryPicturesEls.join(''));
 
-boxPicturesEl.addEventListener('click', handlerOpenOriginal);
+boxPicturesEl.addEventListener('click', handleOpenOriginal);
 
-function handlerOpenOriginal(e) {
+function handleOpenOriginal(e) {
     e.preventDefault();
     const originalEl = basicLightbox.create(`<img src="${e.target.dataset.source}" alt="${e.target.description}"/>`);
     originalEl.show();
     
-    boxPicturesEl.addEventListener('keydown', handlerCloseOriginal);
-    function handlerCloseOriginal(e) {
+    boxPicturesEl.addEventListener('keydown', handleCloseOriginal);
+    function handleCloseOriginal(e) {
     if (e.code === 'Escape') {
         originalEl.close();
-                boxPicturesEl.removeEventListener('keydown', handlerCloseOriginal);
+                boxPicturesEl.removeEventListener('keydown', handleCloseOriginal);
    
     };
     };
